@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects | Efrata's Portfolio</title>
+  <style>
+    /* -----------------------------
+       Global Styles
+    ----------------------------- */
+    :root {
+      --primary-color: #7f5af0;
+      --accent-color: #2cb67d;
+      --text-color: #fffffe;
+      --background-color: #16161a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(22, 22, 26, 0.95);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      padding: 20px;
+      min-height: calc(100vh - 140px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(22, 22, 26, 0.9);
+      color: var(--text-color);
+      margin-top: 40px;
+    }
+
+    /* -----------------------------
+       Projects Page Specific Styles
+    ----------------------------- */
+    .projects-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1200px;
+      margin: 30px auto;
+    }
+
+    .project-section {
+      background: rgba(30,30,50,0.9);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(127,90,240,0.5);
+    }
+
+    .project-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      position: relative;
+      font-size: 1.8rem;
+    }
+
+    .project-section h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    .project-text {
+      line-height: 1.6;
+      color: var(--text-color);
+      font-size: 1.1rem;
+      margin-bottom: 20px;
+    }
+
+    /* Project Content Wrapper */
+    .project-content {
+      display: flex;
+      gap: 30px;
+      align-items: flex-start;
+    }
+
+    .project-info {
+      flex: 1;
+    }
+
+    .project-image-container {
+      flex: 1;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .project-image-container.show {
+      display: block;
+      opacity: 1;
+    }
+
+    /* Project Image */
+    .project-image {
+      width: 100%;
+      max-width: 500px;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.4);
+      transition: transform 0.3s ease;
+      border: 3px solid var(--accent-color);
+    }
+
+    .project-image:hover {
+      transform: scale(1.02);
+    }
+
+    /* Show Picture Button */
+    .show-picture-btn {
+      background: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 500;
+      margin-top: 10px;
+      display: inline-block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+    }
+
+    .show-picture-btn:hover {
+      background: var(--accent-color);
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    }
+
+    .image-error {
+      color: #ff6b6b;
+      font-style: italic;
+      margin-top: 10px;
+      display: none;
+      text-align: center;
+      padding: 10px;
+      background: rgba(255,107,107,0.1);
+      border-radius: 8px;
+    }
+
+    /* Animation for page load */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive styles */
+    @media(max-width: 768px){
+      .projects-container {
+        padding: 0 10px;
+      }
+      
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+      
+      .project-content {
+        flex-direction: column;
+        gap: 20px;
+      }
+      
+      .project-image-container {
+        order: -1;
+      }
+      
+      .project-image {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>My Projects 🚀</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="achievements.html">Achievements</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <div class="projects-container fade-in">
+    <!-- PROJECT 1 -->
+    <section class="project-section">
+      <h2>Robotics Project 🤖</h2>
+      <div class="project-content">
+        <div class="project-info">
+          <p class="project-text">
+            I designed and built an autonomous robot that can navigate through mazes using sensor data and decision-making algorithms. 
+            This project helped me understand the fundamentals of robotics, sensor integration, and programming logic. 
+            The robot uses ultrasonic sensors to detect obstacles and makes real-time decisions to find the optimal path.
+          </p>
+          <button class="show-picture-btn" onclick="toggleImage('robotics')">Show Picture</button>
+          <div id="robotics-error" class="image-error">Image not found: robotics.jpg</div>
+        </div>
+        <div id="robotics-container" class="project-image-container">
+          <img src="robotics.jpg" alt="Robotics Project" class="project-image" onerror="showImageError('robotics')">
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECT 2 -->
+    <section class="project-section">
+      <h2>Brighter Generation 🌟</h2>
+      <div class="project-content">
+        <div class="project-info">
+          <p class="project-text">
+            I developed an educational platform called "Brighter Generation" that provides learning resources for underprivileged students. 
+            The platform offers interactive lessons, mentorship programs, and career guidance to help students unlock their potential. 
+            This project combines web development with social impact, creating opportunities for the next generation of innovators.
+          </p>
+          <button class="show-picture-btn" onclick="toggleImage('brighter')">Show Picture</button>
+          <div id="brighter-error" class="image-error">Image not found: Bg.jpg</div>
+        </div>
+        <div id="brighter-container" class="project-image-container">
+          <img src="Bg.jpg" alt="Brighter Generation Project" class="project-image" onerror="showImageError('brighter')">
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Efrata | Built using HTML & CSS</p>
+</footer>
+
+<script>
+  function toggleImage(projectType) {
+    const container = document.getElementById(`${projectType}-container`);
+    const button = event.target;
+    
+    if (container.classList.contains('show')) {
+      container.classList.remove('show');
+      button.textContent = 'Show Picture';
+    } else {
+      container.classList.add('show');
+      button.textContent = 'Hide Picture';
+    }
+  }
+
+  function showImageError(projectType) {
+    const errorDiv = document.getElementById(`${projectType}-error`);
+    errorDiv.style.display = 'block';
+    console.error(`Image not found: ${projectType}.jpg`);
+  }
+
+  // Check if images exist on page load
+  window.addEventListener('load', function() {
+    const images = document.querySelectorAll('.project-image');
+    images.forEach(img => {
+      const tempImage = new Image();
+      tempImage.src = img.src;
+      tempImage.onload = function() {
+        console.log(`Image loaded successfully: ${img.src}`);
+      };
+      tempImage.onerror = function() {
+        console.error(`Image failed to load: ${img.src}`);
+        const fileName = img.src.split('/').pop();
+        const projectType = fileName.split('.')[0];
+        showImageError(projectType);
+      };
+    });
+  });
+</script>
+</body>
+</html>

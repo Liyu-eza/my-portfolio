@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Feedback | Efrata's Portfolio</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    main { max-width: 700px; margin: 30px auto; background-color: #1a1a2e; padding: 20px; border-radius: 15px; color: #e0e0e0; }
+    input, textarea { width: 100%; padding: 8px; margin: 5px 0 15px 0; border-radius: 5px; border: none; }
+    input[type="submit"] { background-color: #7f5af0; color: white; cursor: pointer; }
+    input[type="submit"]:hover { background-color: #6b47d9; }
+    #feedbackList { margin-top: 20px; background-color: #252540; padding: 15px; border-radius: 10px; }
+    .feedbackItem { border-bottom: 1px solid #444; padding: 5px 0; }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Feedback ✉️</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="achievements.html">Achievements</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <h2>Send Your Feedback</h2>
+  <form onsubmit="submitFeedback(); return false;">
+    <label for="name">Name:</label>
+    <input type="text" id="name" required>
+
+    <label for="message">Message:</label>
+    <textarea id="message" rows="5" required></textarea>
+
+    <input type="submit" value="Send Feedback">
+  </form>
+
+  <hr>
+
+  <h2>View Feedback (Admin Only)</h2>
+  <input type="password" id="adminPass" placeholder="Enter admin password">
+  <button onclick="showFeedback()">Show Feedback</button>
+
+  <div id="feedbackList" style="display:none;">
+    <h3>Previous Feedback:</h3>
+    <div id="list"></div>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Efrata | Built using HTML & CSS</p>
+</footer>
+
+<script>
+const adminPassword = "ezaVsfeedback";
+
+function submitFeedback() {
+  const name = document.getElementById('name').value;
+  const message = document.getElementById('message').value;
+  let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+  feedbacks.push({name: name, message: message});
+  localStorage.setItem('feedbacks', JSON.stringify(feedbacks));
+  alert("Feedback saved! Thank you.");
+  document.getElementById('name').value = '';
+  document.getElementById('message').value = '';
+}
+
+function showFeedback() {
+  const input = document.getElementById('adminPass').value;
+  if(input !== adminPassword) {
+    alert("Incorrect password!");
+    return;
+  }
+  const feedbackList = document.getElementById('feedbackList');
+  const listDiv = document.getElementById('list');
+  listDiv.innerHTML = "";
+  let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+  if(feedbacks.length === 0) {
+    listDiv.innerHTML = "<p>No feedback yet.</p>";
+  } else {
+    feedbacks.forEach(f => {
+      let div = document.createElement('div');
+      div.className = "feedbackItem";
+      div.innerHTML = `<strong>${f.name}:</strong> ${f.message}`;
+      listDiv.appendChild(div);
+    });
+  }
+  feedbackList.style.display = "block";
+}
+</script>
+</body>
+</html>

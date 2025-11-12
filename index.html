@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Efrata's Portfolio</title>
+  <style>
+    /* -----------------------------
+       Global Styles
+    ----------------------------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-image: url('women.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      background-repeat: no-repeat;
+      color: #fffffe;
+      line-height: 1.6;
+      min-height: 100vh;
+      position: relative;
+    }
+
+    /* Overlay for better text readability */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(22, 22, 26, 0.7);
+      z-index: -1;
+    }
+
+    header {
+      background: rgba(22, 22, 26, 0.85);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(10px);
+    }
+
+    header h1 {
+      color: #7f5af0;
+      margin-bottom: 10px;
+      font-size: 2.2rem;
+    }
+
+    header p {
+      font-size: 1.1rem;
+      margin-bottom: 15px;
+      opacity: 0.9;
+    }
+
+    nav a {
+      color: #fffffe;
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2cb67d;
+    }
+
+    main {
+      padding: 40px 20px;
+      min-height: calc(100vh - 140px);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(22, 22, 26, 0.85);
+      color: #fffffe;
+    }
+
+    /* -----------------------------
+       Hero Section Styles
+    ----------------------------- */
+    .hero {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      max-width: 800px;
+      background: rgba(30, 30, 50, 0.8);
+      padding: 40px;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      backdrop-filter: blur(5px);
+      border: 1px solid rgba(127, 90, 240, 0.3);
+    }
+
+    .hero h2 {
+      color: #7f5af0;
+      margin-bottom: 20px;
+      font-size: 2.5rem;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      line-height: 1.7;
+      margin-bottom: 0;
+    }
+
+    /* Animation for page load */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 1s ease forwards;
+    }
+
+    /* Responsive styles */
+    @media(max-width: 768px){
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+      
+      .hero {
+        padding: 30px 20px;
+        margin: 0 10px;
+      }
+      
+      .hero h2 {
+        font-size: 2rem;
+      }
+      
+      .hero p {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>Hi, I'm Efrata, you can call me Eza 👋</h1>
+  <p>High School Student | Aspiring Web Developer & Creative Technologist</p>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="achievements.html">Achievements</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <!-- Hero Section -->
+  <section class="hero fade-in">
+    <h2>Welcome!</h2>
+    <p>This portfolio shows my projects, achievements, and creative work. Explore and get to know my journey! 💻🌟</p>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Efrata | Built using HTML & CSS</p>
+</footer>
+</body>
+</html>

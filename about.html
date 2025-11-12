@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | Efrata's Portfolio</title>
+  <style>
+    :root {
+      --primary-color: #7f5af0;
+      --accent-color: #2cb67d;
+      --text-color: #fffffe;
+      --background-color: #16161a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(22, 22, 26, 0.95);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      padding: 20px;
+      min-height: calc(100vh - 140px);
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(22, 22, 26, 0.9);
+      color: var(--text-color);
+      margin-top: 40px;
+    }
+
+    .about-container {
+      display: flex;
+      flex-direction: column;
+      gap: 30px;
+      max-width: 1000px;
+      margin: 30px auto;
+    }
+
+    .about-section {
+      background: rgba(30,30,50,0.9);
+      padding: 25px;
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .about-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 35px rgba(127,90,240,0.5);
+    }
+
+    .about-section h2 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      position: relative;
+      font-size: 1.8rem;
+    }
+
+    .about-section h2::after {
+      content: '';
+      display: block;
+      width: 50px;
+      height: 3px;
+      background: var(--accent-color);
+      border-radius: 5px;
+      margin-top: 5px;
+    }
+
+    .about-text {
+      line-height: 1.6;
+      color: var(--text-color);
+      font-size: 1.1rem;
+    }
+
+    .skills-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 10px;
+      position: relative;
+    }
+
+    .skill-item {
+      position: relative;
+      display: inline-block;
+    }
+
+    .skill-badge {
+      background: var(--primary-color);
+      color: white;
+      padding: 10px 18px;
+      border-radius: 15px;
+      font-size: 0.95em;
+      transition: all 0.3s;
+      cursor: pointer;
+      display: inline-block;
+      font-weight: 500;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+
+    .skill-badge:hover {
+      transform: scale(1.05);
+      background: var(--accent-color);
+    }
+
+    .skill-paper {
+      position: absolute;
+      top: 100%;
+      left: 50%;
+      transform: translateX(-50%) scaleY(0);
+      transform-origin: top;
+      background: #fff;
+      color: #333;
+      padding: 15px;
+      border-radius: 8px;
+      width: 200px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+      font-size: 0.9em;
+      line-height: 1.4;
+      z-index: 10;
+      opacity: 0;
+      transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.3s ease;
+      margin-top: 10px;
+      text-align: center;
+      border: 1px solid #e0e0e0;
+    }
+
+    .skill-paper::before {
+      content: '';
+      position: absolute;
+      top: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 0;
+      height: 0;
+      border-left: 8px solid transparent;
+      border-right: 8px solid transparent;
+      border-bottom: 8px solid #fff;
+    }
+
+    .skill-item:hover .skill-paper {
+      transform: translateX(-50%) scaleY(1);
+      opacity: 1;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    @media(max-width: 768px){
+      .about-container { padding: 0 10px; }
+      .skill-paper { width: 160px; font-size: 0.85em; }
+      header h1 { font-size: 1.8rem; }
+      nav a { display: inline-block; margin: 5px 8px; }
+      .skills-list { gap: 10px; }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>About Me 👩‍💻</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="achievements.html">Achievements</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <div class="about-container fade-in">
+    <!-- WHO I AM -->
+    <section class="about-section">
+      <h2>Who I Am</h2>
+      <p class="about-text">
+        Hi! I'm <strong>Efrata Silesh</strong>, a high school student at Bahir Dar University (B.D.U.) STEM Center.
+        I'm passionate about creative technology, especially web development. 
+        My interest in programming began with school experiences that sparked my curiosity about how technology works.
+        I've learned the basics of C++, Python, and C#, and I enjoy applying these skills to build projects that positively impact my community.
+        I love learning new skills, exploring ideas, and turning them into meaningful creations. 💻✨
+      </p>
+    </section>
+
+    <!-- GOALS -->
+    <section class="about-section">
+      <h2>My Goals</h2>
+      <p class="about-text">
+        My goal is to become a skilled Game developer and designer who creates tools that inspire and enhance the Entertainment field. 🌱
+      </p>
+    </section>
+
+    <!-- HOBBIES & INTERESTS -->
+    <section class="about-section">
+      <h2>Hobbies & Interests 🎨</h2>
+      <p class="about-text">
+        I enjoy coding, reading, drawing, and experimenting with design ideas. 
+        I strongly believe that creativity and technology together can build a better and more innovative world!
+      </p>
+    </section>
+
+    <!-- SKILLS -->
+    <section class="about-section">
+      <h2>Skills 💡</h2>
+      <div class="skills-list">
+        <div class="skill-item">
+          <span class="skill-badge">C++</span>
+          <div class="skill-paper">The foundation of performance-critical applications and systems programming</div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-badge">Python</span>
+          <div class="skill-paper">Versatile language for everything from web apps to AI and data science</div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-badge">C#</span>
+          <div class="skill-paper">Powering modern applications and Unity game development</div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-badge">HTML & CSS</span>
+          <div class="skill-paper">Building beautiful, responsive web experiences and layouts</div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-badge">JavaScript</span>
+          <div class="skill-paper">Bringing interactivity and dynamic functionality to web pages</div>
+        </div>
+        <div class="skill-item">
+          <span class="skill-badge">Web Development</span>
+          <div class="skill-paper">Building the digital spaces and applications that connect us all</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</main>
+
+<footer>
+  <p>© 2025 Efrata | Built using HTML & CSS</p>
+</footer>
+</body>
+</html>

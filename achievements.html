@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Achievements | Efrata's Portfolio</title>
+  <style>
+    /* -----------------------------
+       Global Styles
+    ----------------------------- */
+    :root {
+      --primary-color: #7f5af0;
+      --accent-color: #2cb67d;
+      --text-color: #fffffe;
+      --background-color: #16161a;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      padding: 0;
+    }
+
+    header {
+      background: rgba(22, 22, 26, 0.95);
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header h1 {
+      color: var(--primary-color);
+      margin-bottom: 15px;
+      font-size: 2.2rem;
+    }
+
+    nav a {
+      color: var(--text-color);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: var(--accent-color);
+    }
+
+    main {
+      padding: 20px;
+      min-height: calc(100vh - 140px);
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(22, 22, 26, 0.9);
+      color: var(--text-color);
+      margin-top: 40px;
+    }
+
+    /* -----------------------------
+       Achievements Page Specific Styles
+    ----------------------------- */
+    .achievement {
+      background: rgba(30,30,50,0.9);
+      margin: 15px 0;
+      padding: 15px 20px;
+      border-left: 5px solid var(--accent-color);
+      border-radius: 10px;
+      cursor: pointer;
+      overflow: hidden;
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .achievement:hover {
+      transform: translateX(5px);
+      box-shadow: 0 8px 25px rgba(127,90,240,0.4);
+    }
+
+    .achievement h3 {
+      margin: 0;
+      color: var(--primary-color);
+      font-size: 1.3rem;
+    }
+
+    .description {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease, padding 0.3s ease;
+      margin-top: 10px;
+      color: var(--text-color);
+      line-height: 1.5;
+    }
+
+    .description.show {
+      max-height: 500px; /* Increased to accommodate longer descriptions */
+      padding-top: 10px;
+    }
+
+    .toggle-btn {
+      margin-top: 10px;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: transform 0.3s, background 0.3s;
+      display: block;
+      margin: 20px auto;
+      font-size: 1rem;
+    }
+
+    .toggle-btn:hover {
+      transform: scale(1.05);
+      background-color: var(--accent-color);
+    }
+
+    section h2 {
+      color: var(--primary-color);
+      text-align: center;
+      margin-bottom: 30px;
+      font-size: 2rem;
+    }
+
+    /* Animation for page load */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .fade-in {
+      animation: fadeIn 0.8s ease forwards;
+    }
+
+    /* Responsive styles */
+    @media(max-width: 768px){
+      header h1 {
+        font-size: 1.8rem;
+      }
+      
+      nav a {
+        display: inline-block;
+        margin: 5px 8px;
+      }
+      
+      .achievement h3 {
+        font-size: 1.1rem;
+      }
+      
+      main {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+  <h1>My Achievements 🏆</h1>
+  <nav>
+    <a href="index.html">Home</a> |
+    <a href="about.html">About</a> |
+    <a href="projects.html">Projects</a> |
+    <a href="achievements.html">Achievements</a> |
+    <a href="contact.html">Contact</a> |
+    <a href="feedback.html">Feedback</a>
+  </nav>
+</header>
+
+<main>
+  <section class="fade-in">
+    <h2>Timeline of Achievements</h2>
+
+    <div class="achievement">
+      <h3>Intern at DevTech</h3>
+      <p class="description">During my internship at DevTech, I worked on real-world web development projects. This experience enhanced my coding and problem-solving skills.</p>
+    </div>
+
+    <div class="achievement">
+      <h3>Member of Student Council</h3>
+      <p class="description">As a student council member, I participated in organizing events, announcement, and leadership qualities in the role of media coordinator that helped me improve communication and teamwork skills.</p>
+    </div>
+
+    <div class="achievement">
+      <h3>UDACITY Certificate</h3>
+      <p class="description">I successfully completed a Udacity course in Funadamental Programing Language, gaining in-depth knowledge of HTML, CSS, JavaScript, and project-based learning techniques.</p>
+    </div>
+
+    <div class="achievement">
+      <h3>Brighter Generation Program</h3>
+      <p class="description">In the Brighter Generation program, I contributed to a community project designing a smart waste management system. I also learned essay writing techniques and leadership qualities.</p>
+    </div>
+
+    <div class="achievement">
+      <h3>Co-Founder of Senior Insights and Community Service Club</h3>
+      <p class="description">The Senior Insights Club bridges the gap between senior and junior students in our school. The Community Service Club helps others and improves the community. Both clubs promote leadership, mentorship, and positive impact among students.</p>
+    </div>
+
+    <button class="toggle-btn" id="showMoreBtn">More...</button>
+  </section>
+</main>
+
+<footer>
+  <p>© 2025 Efrata | Built using HTML & CSS</p>
+</footer>
+
+<script>
+  const btn = document.getElementById('showMoreBtn');
+  const descriptions = document.querySelectorAll('.description');
+
+  let expanded = false;
+
+  btn.addEventListener('click', () => {
+    expanded = !expanded;
+    descriptions.forEach(desc => {
+      if(expanded) {
+        desc.classList.add('show');
+      } else {
+        desc.classList.remove('show');
+      }
+    });
+    btn.textContent = expanded ? 'Less...' : 'More...';
+  });
+</script>
+
+</body>
+</html>
