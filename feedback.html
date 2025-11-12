@@ -6,12 +6,43 @@
   <title>Feedback | Efrata's Portfolio</title>
   <link rel="stylesheet" href="style.css">
   <style>
-    main { max-width: 700px; margin: 30px auto; background-color: #1a1a2e; padding: 20px; border-radius: 15px; color: #e0e0e0; }
-    input, textarea { width: 100%; padding: 8px; margin: 5px 0 15px 0; border-radius: 5px; border: none; }
-    input[type="submit"] { background-color: #7f5af0; color: white; cursor: pointer; }
-    input[type="submit"]:hover { background-color: #6b47d9; }
-    #feedbackList { margin-top: 20px; background-color: #252540; padding: 15px; border-radius: 10px; }
-    .feedbackItem { border-bottom: 1px solid #444; padding: 5px 0; }
+    main { 
+      max-width: 700px; 
+      margin: 30px auto; 
+      background-color: #1a1a2e; 
+      padding: 20px; 
+      border-radius: 15px; 
+      color: #e0e0e0; 
+    }
+    input, textarea { 
+      width: 100%; 
+      padding: 8px; 
+      margin: 5px 0 15px 0; 
+      border-radius: 5px; 
+      border: none; 
+    }
+    input[type="submit"], button { 
+      background-color: #7f5af0; 
+      color: white; 
+      cursor: pointer; 
+      border: none; 
+      padding: 8px 15px; 
+      border-radius: 5px; 
+      margin-top: 5px;
+    }
+    input[type="submit"]:hover, button:hover { 
+      background-color: #6b47d9; 
+    }
+    #feedbackList { 
+      margin-top: 20px; 
+      background-color: #252540; 
+      padding: 15px; 
+      border-radius: 10px; 
+    }
+    .feedbackItem { 
+      border-bottom: 1px solid #444; 
+      padding: 5px 0; 
+    }
   </style>
 </head>
 <body>
@@ -44,6 +75,7 @@
   <h2>View Feedback (Admin Only)</h2>
   <input type="password" id="adminPass" placeholder="Enter admin password">
   <button onclick="showFeedback()">Show Feedback</button>
+  <button id="hideBtn" onclick="hideFeedback()" style="display:none;">Hide Feedback</button>
 
   <div id="feedbackList" style="display:none;">
     <h3>Previous Feedback:</h3>
@@ -75,10 +107,14 @@ function showFeedback() {
     alert("Incorrect password!");
     return;
   }
+
   const feedbackList = document.getElementById('feedbackList');
   const listDiv = document.getElementById('list');
+  const hideBtn = document.getElementById('hideBtn');
+
   listDiv.innerHTML = "";
   let feedbacks = JSON.parse(localStorage.getItem('feedbacks')) || [];
+
   if(feedbacks.length === 0) {
     listDiv.innerHTML = "<p>No feedback yet.</p>";
   } else {
@@ -89,7 +125,15 @@ function showFeedback() {
       listDiv.appendChild(div);
     });
   }
+
   feedbackList.style.display = "block";
+  hideBtn.style.display = "inline-block";
+}
+
+function hideFeedback() {
+  document.getElementById('feedbackList').style.display = "none";
+  document.getElementById('hideBtn').style.display = "none";
+  document.getElementById('adminPass').value = "";
 }
 </script>
 </body>
